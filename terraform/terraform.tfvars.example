@@ -1,0 +1,16 @@
+# AWS Region Configuration
+aws_region = "ap-southeast-1"  # Singapore region
+
+# EC2 Instance Configuration
+ami_id           = "ami-0df7a207adb9748c7"  # Amazon Linux 2023 AMI in ap-southeast-1
+instance_type    = "t3.micro"                # Free tier eligible instance type
+
+# SSH Key Configuration
+ssh_public_key_path = "~/.ssh/id_rsa.pub"   # Path to your SSH public key
+
+# Optional Tags (uncomment and modify as needed)
+# additional_tags = {
+#   "Environment" = "Development"
+#   "Project"     = "DevOps-Homelab"
+#   "Owner"       = "YourName"
+# }

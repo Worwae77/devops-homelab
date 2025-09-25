@@ -1,0 +1,5 @@
+---
+- name: Install Docker on EC2 instances
+  hosts: docker_hosts
+  roles:
+    - docker

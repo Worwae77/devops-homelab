@@ -1,0 +1,37 @@
+---
+# tasks for installing Docker on Amazon Linux 2023
+
+- name: Update all packages
+  dnf:
+    name: '*'
+    state: latest
+    update_cache: yes
+  become: yes
+
+- name: Install required packages
+  dnf:
+    name:
+      - docker
+      - python3-pip
+    state: present
+  become: yes
+
+- name: Install Docker Python SDK
+  pip:
+    name: docker
+    state: present
+  become: yes
+
+- name: Start Docker service
+  systemd:
+    name: docker
+    state: started
+    enabled: yes
+  become: yes
+
+- name: Add ec2-user to docker group
+  user:
+    name: ec2-user
+    groups: docker
+    append: yes
+  become: yes

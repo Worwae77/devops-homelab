@@ -1,7 +1,7 @@
 # Terraform configuration for deploying an EC2 instance on AWS
 
 provider "aws" {
-  region = var.aws_region
+  region = "ap-southeast-1"  # Singapore region
 }
 
 # Create a VPC
@@ -19,7 +19,7 @@ resource "aws_vpc" "main" {
 resource "aws_subnet" "public" {
   vpc_id            = aws_vpc.main.id
   cidr_block        = "10.0.1.0/24"
-  availability_zone = "${var.aws_region}a"
+  availability_zone = "ap-southeast-1a"
 
   tags = {
     Name = "devops-homelab-subnet"
@@ -99,12 +99,4 @@ resource "aws_instance" "example" {
   tags = {
     Name = "devops-homelab-ec2"
   }
-}
-
-output "instance_id" {
-  value = aws_instance.example.id
-}
-
-output "public_ip" {
-  value = aws_instance.example.public_ip
 }

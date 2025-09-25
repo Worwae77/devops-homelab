@@ -1,0 +1,50 @@
+# Local environment files
+.env
+.envrc
+*.env
+.env.*
+terraform/.env
+
+# Terraform files
+**/.terraform/*
+*.tfstate
+*.tfstate.*
+*.tfvars
+*.tfvars.json
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
+.terraformrc
+terraform.rc
+crash.log
+crash.*.log
+
+# SSH Keys
+**/*.pem
+**/*.key
+**/*id_rsa*
+**/*id_ed25519*
+**/*.ppk
+
+# IDE and editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Ansible files
+*.retry
+
+# Logs
+*.log
+logs/
+
+# Temporary files
+*.tmp
+*.bak
+*~
