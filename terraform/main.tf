@@ -83,7 +83,7 @@ resource "aws_security_group" "allow_ssh" {
 
 # Generate key pair for SSH access
 resource "aws_key_pair" "deployer" {
-  key_name   = "devops-homelab-key"
+  key_name   = "devops-homelab-key-v2"
   public_key = file(var.ssh_public_key_path)
 }
 
@@ -95,16 +95,6 @@ resource "aws_instance" "example" {
   vpc_security_group_ids     = [aws_security_group.allow_ssh.id]
   key_name                   = aws_key_pair.deployer.key_name
   associate_public_ip_address = true
-
-  # Stop the instance instead of terminating
-  lifecycle {
-    prevent_destroy = true
-  }
-
-  # Set instance state to stopped
-  # Note: Use instance_state = "stopped" when you want to stop the instance
-  # Remove or comment this line when you want to start it again
-  # instance_state = "stopped"
 
   tags = {
     Name = "devops-homelab-ec2"
