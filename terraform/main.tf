@@ -96,6 +96,16 @@ resource "aws_instance" "example" {
   key_name                   = aws_key_pair.deployer.key_name
   associate_public_ip_address = true
 
+  # Stop the instance instead of terminating
+  lifecycle {
+    prevent_destroy = true
+  }
+
+  # Set instance state to stopped
+  # Note: Use instance_state = "stopped" when you want to stop the instance
+  # Remove or comment this line when you want to start it again
+  # instance_state = "stopped"
+
   tags = {
     Name = "devops-homelab-ec2"
   }
